@@ -1,0 +1,153 @@
+<section class="w-full py-4 md:py-20 relative">
+    <h2 class="w-fit md:mx-auto px-4 text-left md:text-center ">Kundeanmeldelser på Trustpilot</h2>
+    <div class=" relative md:pt-12 w-full overflow-hidden">
+        <a class="prev absolute top-1/2 left-0 text-4xl z-10 cursor-pointer" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next absolute top-1/2 right-0 text-4xl z-10 cursor-pointer" onclick="changeImage(1)">&#10095;</a>
+
+        <div class="testimonial-wrapper flex flex-nowrap px-4 transition-transform duration-500" id="testimonialWrapper">
+            <div class="testimonial-card flex-none w-full md:w-1/3 p-4">
+              <div class="bg-gray-50 p-6 shadow-md rounded-lg">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Kirse</h3>                                
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700 text-base">
+                        "Vi fik lavet 2 værelser og lofter med fuldspartling og filt. RAH maler arbejdede hurtigt og effektivt og leverede opgaven til stor tilfredshed. Kan varmt anbefales."
+                    </p>
+                </div>
+                <div class="p-2 text-right">
+                    <span class="text-sm text-primary-color">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card flex-none w-full md:w-1/3 p-4">
+              <div class="bg-gray-50 p-6 shadow-md rounded-lg">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Helle</h3>                                
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700 text-base">
+                        "Superfint arbejde til fornuftig pris. De var endda færdige med deres arbejde to dage før tid. Rydder pænt op efter sig. Og har indstillingen at alt kan lade sig gøre. Mine varmeste anbefalinger."
+                    </p>
+                </div>
+                <div class="p-2 text-right">
+                    <span class="text-sm text-primary-color">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card flex-none w-full md:w-1/3 p-4">
+              <div class="bg-gray-50 p-6 shadow-md rounded-lg">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Jakob</h3>                                
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700 text-base">
+                        "Resultatet var fuldstændig som vi ønskede! Vi fik et hurtigt besøg en time efter vi havde første kontakt, og 48 timer efter havde vi en helt nymalet lejlighed, som var fuldstændig som den skulle være! Jeg kan kun anbefale at kontakte RAH Maler til at få malet!"
+                    </p>
+                </div>
+                <div class="p-2 text-right">
+                    <span class="text-sm text-primary-color">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card flex-none w-full md:w-1/3 p-4">
+              <div class="bg-gray-50 p-6 shadow-md rounded-lg">
+                <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Ann-Marie</h3>                                
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700 text-base">
+                        "Selv om jeg lavede planerne lidt om blev det ordnet uden problemer OG meget pænt malet. Godt tilfreds og vil gerne bruge dem igen."
+                    </p>
+                </div>
+                <div class="p-2 text-right">
+                    <span class="text-sm text-primary-color">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card flex-none w-full md:w-1/3 p-4">
+                <div class="bg-gray-50 p-6 shadow-md rounded-lg">
+                    <div class="ml-4">
+                    <h3 class="text-lg font-semibold">Magnus</h3>                                
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700 text-base">
+                        "Professionel og dygtig. Opgaven blev udført hurtig, og blev professionelt vurderet ved udflytningssyn som tilfredsstillende. De tilbyder også professionel rengøring som var udmærket"
+                    </p>
+                </div>
+                <div class="p-2 text-right">
+                    <span class="text-sm text-primary-color">★★★★★</span>
+                </div>
+                </div>
+              </div>
+        </div>                      
+    </div>                                
+</section>
+
+<script>
+    let currentIndex = 0;
+
+function changeImage(direction) {
+    const wrapper = document.getElementById('testimonialWrapper');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const visibleCards = getVisibleCardsCount();  // Calculate visible cards based on container width
+    const totalCards = cards.length;
+
+    // Calculate the max index we can go (without moving too far)
+    const maxIndex = totalCards - visibleCards;
+
+    // Log for debugging purposes
+    console.log('Before change:');
+    console.log('currentIndex:', currentIndex);
+    console.log('direction:', direction);
+    console.log('visibleCards:', visibleCards);
+    console.log('totalCards:', totalCards);
+    console.log('maxIndex:', maxIndex);
+
+    // Update the current index based on the direction
+    if (direction === -1 && currentIndex > 0) {
+        currentIndex--; // Move left
+    } else if (direction === 1 && currentIndex < maxIndex) {
+        currentIndex++; // Move right
+    }
+
+    // Ensure currentIndex does not exceed the valid range
+    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+
+    // Calculate the translateX value based on the card width
+    const cardWidth = cards[0].offsetWidth; // Get the width of a single card
+    const translateValue = currentIndex * cardWidth; // Now it correctly shifts by one card width
+
+    // Log the calculated translate value for debugging
+    console.log('After change:');
+    console.log('currentIndex:', currentIndex);
+    console.log('translateValue:', translateValue);
+    console.log('cardWidth:', cardWidth);
+
+    // Apply the transform to move the testimonial wrapper
+    wrapper.style.transform = `translateX(-${translateValue}px)`;    
+}
+
+function getVisibleCardsCount() {
+    const cardWidth = document.querySelector('.testimonial-card').offsetWidth;
+    const containerWidth = document.querySelector('.container').offsetWidth;
+    return Math.floor(containerWidth / cardWidth); // Return how many cards fit in the container
+}
+
+// Initial setup to handle resize
+window.addEventListener('resize', () => {
+    const wrapper = document.getElementById('testimonialWrapper');
+    const cardWidth = document.querySelector('.testimonial-card').offsetWidth;
+    const visibleCards = getVisibleCardsCount();  // Recalculate visible cards on resize
+
+    // Adjust the translation based on the updated container and card widths
+    const translateValue = currentIndex * cardWidth;
+    wrapper.style.transform = `translateX(-${translateValue}px)`;
+    
+    // Log resize event
+    console.log('Resize event:');
+    console.log('currentIndex:', currentIndex);
+    console.log('visibleCards:', visibleCards);
+});
+
+</script>

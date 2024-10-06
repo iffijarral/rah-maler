@@ -1,0 +1,66 @@
+%include('./components/_header')
+<main class="main">
+    <section class="w-full h-32 md:h-64 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container flex items-center justify-center h-full text-white">
+            <h1 class="text-3xl md:text-6xl uppercase font-asap font-bold text-white w-[20ch] text-center">Renovering</h1>
+        </div>
+    </section>
+    <section class="w-full py-4 md:py-20 px-4 md:px-0 container">        
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+          <!-- Left Column (Text) -->          
+            <div class="md:pb-8">
+                <h2>Renovering</h2>
+                <p>
+                    Vi tilbyder professionelle renoveringsløsninger til både private og erhverv. 
+                    Uanset om det drejer sig om mindre opfriskninger eller større totalrenoveringer, 
+                    står vores erfarne håndværkere klar til at hjælpe dig igennem hele processen.
+                </p>       
+                <p class="font-bold py-4">Vi kan hjælpe med:</p>
+                
+                <ul class="list-disc px-4">
+                    <li>
+                        <p> Renovering af badeværelser og køkkener </p>
+                    </li>
+                    <li class="py-2">
+                        <p> Opfriskning af vægge og lofter </p>
+                    </li>
+                    <li>
+                        <p> Totalrenovering af hele boligen </p>
+                    </li> 
+                    <li class="py-2">
+                        <p> Udskiftning af gulve og vinduer </p>
+                    </li>
+                    <li>
+                        <p> Modernisering af ældre bygninger </p>
+                    </li>
+                    <li class="pt-2">
+                        <p> Tilpasning og optimering af rumlayout </p>
+                    </li>                    
+                </ul>
+                <p class="pt-4">
+                    Vores fokus er på høj kvalitet og grundighed, så du kan være sikker på, at arbejdet bliver udført til perfektion. 
+                    Vi arbejder tæt sammen med dig for at sikre, at dine behov og ønsker bliver opfyldt.
+                </p>
+            </div>
+          
+          <!-- Right Column (Image) -->
+            <div class="hidden md:block relative -mt-9">
+                %include('./components/_tilbud_form')
+            </div>                    
+        </div>        
+    </section>
+    <section class="w-full h-32 md:h-40 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container h-full flex justify-between items-center">
+            <div>
+                <h3 class="font-asap text-xl sm:text-2xl md:text-4xl font-semibold text-white">Skal du bruge et tilbud?</h3>
+                <p class="text-lg md:text-2xl text-white">Kontakt os allerede i dag</p>                
+            </div>
+            <button class="flex bg-primary-color font-medium text-lg md:text-2xl text-white py-2 md:py-3 px-4 rounded w-fit cursor-pointer hover:bg-red-500">                     
+                Få et godt tilbud
+            </button>
+        </div>
+    </section>
+    %include('./components/_tilbud_why')
+         
+</main>
+%include('./components/_footer')

@@ -1,0 +1,78 @@
+%include('./components/_header')
+<main class="main">
+    <section class="w-full h-32 md:h-64 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container flex items-center justify-center h-full text-white">
+            <h1 class="text-3xl md:text-6xl uppercase font-asap font-bold text-white w-[20ch] text-center">Spartling</h1>
+        </div>
+    </section>
+    <section class="w-full py-4 md:py-20 container px-4 md:px-0">        
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+          <!-- Left Column (Text) -->          
+            <div class="md:pb-8">
+                <h2>Spartel opgaver</h2>
+                <p>
+                    Hos os tilbyder vi professionelle spartel opgaver, der sikrer et jævnt og fejlfrit resultat. 
+                    Uanset om du har brug for spartling af vægge, lofter eller andre overflader, står vi klar til at hjælpe.
+                    Vores team har erfaring med forskellige typer spartelopgaver, herunder:
+                </p>                
+                <ul class="list-disc px-4">
+                    <li class="py-4">
+                        <p>
+                            <span class="font-bold">Udfyldning af revner og huller:</span>
+                            Vi reparerer skader på dine vægge og lofter, så overfladerne bliver glatte og klar til maling eller tapetsering.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="font-bold">Helspartling:</span>
+                            Hvis du ønsker en helt glat overflade, kan vi udføre helspartling, der giver et perfekt grundlag for videre behandling.
+                        </p>
+                    </li>
+                    <li class="pt-4">
+                        <p>
+                            <span class="font-bold">Spartling af gipsplader:</span>
+                            Vi sørger for, at samlingerne mellem gipspladerne bliver usynlige, så du får en ensartet og pæn finish.
+                        </p>
+                    </li>                    
+                </ul>
+                <p class="pt-4">
+                    Vi bruger kun materialer af høj kvalitet og moderne teknikker for at sikre et langvarigt og holdbart resultat. 
+                    Uanset om det er i forbindelse med renovering eller nybyggeri, kan du stole på os til dine spartelopgaver.
+                </p>
+            </div>
+          
+          <!-- Right Column (Image) -->
+          <div>
+            <picture>
+                <!-- Image for small screens -->
+                <source srcset="/images/small/spartling.jpg" media="(max-width: 320px)">
+                
+                <!-- Image for medium screens -->
+                <source srcset="/images/medium/spartling.jpg" media="(max-width: 768px)">
+                
+                <!-- Image for large screens -->
+                <source srcset="/images/large/spartling.jpg" media="(max-width: 1024px)">
+
+                <!-- Image for large screens -->
+                <source srcset="/images/super_large/spartling.jpg" media="(max-width: 1920px)">
+                
+                <!-- Default image if none of the conditions match -->
+                <img src="/images/large/spartling.jpg" class="w-full h-full min-w-0 object-cover" alt="RAH MALER" loading="lazy">
+            </picture>
+          </div>
+        </div>        
+    </section>
+    <section class="w-full h-32 md:h-40 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container h-full flex justify-between items-center">
+            <div>
+                <h3 class="font-asap text-xl sm:text-2xl md:text-4xl font-semibold text-white">Skal du bruge et tilbud?</h3>
+                <p class="text-lg md:text-2xl text-white">Kontakt os allerede i dag</p>                
+            </div>
+            <button class="flex bg-primary-color font-medium text-lg md:text-2xl text-white py-2 md:py-3 px-4 rounded w-fit cursor-pointer hover:bg-red-500">                     
+                Få et godt tilbud
+            </button>
+        </div>
+    </section>   
+    %include('./components/_tilbud_why')
+</main>
+%include('./components/_footer')

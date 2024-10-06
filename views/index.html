@@ -1,0 +1,104 @@
+%include('./components/_header')
+        %include('./components/_hero')
+        <!-- Main Content -->
+        <main>
+            %include('./components/_services')
+            <section class="w-full bg-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 bg-white md:bg-gray-100">
+                  <!-- Left Column (Text) -->
+                  <div class="px-4 md:px-20 py-8">                    
+                      <h2>Velkommen til RAH Maler</h2>
+                      <p class="leading-relaxed">
+                        Kompetent rådgivning og kvalitet i arbejdets udførelse, er vores grundlæggende værdier. 
+                        Professionel håndtering af opgaven er altid kendetegnede, 
+                        uanset om det drejer sig om en stor og kompleks opgave for en bygherre, 
+                        eller om det er en mindre opgave for en privat husejer eller lejer. 
+                        Du finder altid en kompetent og pålidelig maler hos os.
+                      </p>
+                      <h2 class="pt-4">En håndværker du kan stole på</h2>
+                      <p class="leading-relaxed">
+                        Med fokus på vores kunder er det utrolig vigtigt for os, at du føler dig tryg. 
+                        Vi er i tæt dialog med dig gennem hele projektet, 
+                        og indgår altid en klar skriftlig aftale inden opstart, 
+                        så alle er indforstået med opgaven og vi undgår misforståelser.
+                      </p>                    
+                  </div>
+                  <!-- Right Column (Image) -->
+                  <picture class="hidden md:block">
+                    <!-- Image for small screens -->
+                    <source srcset="/images/small/02.jpg" media="(max-width: 320px)">
+                    
+                    <!-- Image for medium screens -->
+                    <source srcset="/images/medium/02.jpg" media="(max-width: 768px)">
+                    
+                    <!-- Image for large screens -->
+                    <source srcset="/images/large/02.jpg" media="(max-width: 1024px)">
+
+                    <!-- Image for large screens -->
+                    <source srcset="/images/super_large/02.jpg" media="(max-width: 1920px)">
+                    
+                    <!-- Default image if none of the conditions match -->
+                    <img src="/images/large/02.jpg" class="w-full h-full min-w-0 object-cover" alt="RAH MALER" loading="lazy">
+                  </picture>                  
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <!-- Left Column (Image) -->
+                    <picture class="hidden md:block">
+                        <!-- Image for small screens -->
+                        <source srcset="/images/small/18.jpg" media="(max-width: 320px)">
+                        
+                        <!-- Image for medium screens -->
+                        <source srcset="/images/medium/18.jpg" media="(max-width: 768px)">
+                        
+                        <!-- Image for large screens -->
+                        <source srcset="/images/large/18.jpg" media="(max-width: 1024px)">
+    
+                        <!-- Image for large screens -->
+                        <source srcset="/images/super_large/18.jpg" media="(max-width: 1920px)">
+                        
+                        <!-- Default image if none of the conditions match -->
+                        <img src="/images/large/18.jpg" class="w-full h-full min-w-0 object-cover" alt="RAH MALER" loading="lazy">
+                    </picture> 
+                    <!-- Right Column (Text) -->
+                    <div class="px-4 md:px-20 py-8">                      
+                        <h2>Hvorfor vælge os?</h2>
+                        <ul>
+                            <li class="flex gap-8 items-center">
+                                <div class="w-16 h-16 rounded-full bg-primary-color flex items-center justify-center">
+                                    <img src="../images/time.svg" alt="time">
+                                </div>
+                                <p class="text-xl">Kvalitet service til tiden</p>
+                            </li>
+                            <li class="flex gap-8 items-center py-4">
+                                <div class="w-16 h-16 rounded-full bg-primary-color flex items-center justify-center">
+                                    <img src="../images/paint.svg" alt="time">
+                                </div>
+                                <p class="text-xl">Bæredygtigt og høj kvalitet materiale</p>
+                            </li>
+                            <li class="flex gap-8 items-center">
+                                <div class="w-16 h-16 rounded-full bg-primary-color flex items-center justify-center">
+                                    <img src="../images/handshake.svg" alt="handshake">
+                                </div>
+                                <p class="text-xl">Opfylder altid forpligtelserne</p>
+                            </li>
+                            <li class="flex gap-8 items-center py-4">
+                                <div class="w-16 h-16 rounded-full bg-primary-color flex items-center justify-center">
+                                    <img src="../images/star.svg" alt="star">
+                                </div>
+                                <p class="text-xl">Positive anmeldelser og udtalelser</p>
+                            </li>
+                            <li class="flex gap-8 items-center">
+                                <div class="w-16 h-16 rounded-full bg-primary-color flex items-center justify-center">
+                                    <img src="../images/staff.svg" alt="staff">
+                                </div>
+                                <p class="text-xl">Erfarne og dedikerede medarbejdere</p>
+                            </li>
+                        </ul>                      
+                    </div>                                        
+                </div>
+            </section>
+            
+            %include('./components/_testimonials')
+        </main>
+%include('./components/_footer')        
+

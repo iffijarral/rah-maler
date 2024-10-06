@@ -1,0 +1,61 @@
+<div class="bg-white p-8">
+    <div class="flex justify-center items-center">
+        <div class="w-full">
+            <h2 class="font-semibold mb-6 uppercase">Få et uforpligtende tilbud</h2>
+
+            <form id="frm-tilbud" method="POST" class="space-y-4">
+
+                <!-- Name -->
+                <div>
+                    <!-- <label for="name" class="block font-medium text-gray-700">Full Name</label> -->
+                    <input type="text" id="name" name="name" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="Dit Navn">
+                    <span id="name-error" class="text-red-500"></span>
+                </div>
+                
+                <div class="flex gap-4">     
+                    <div class="w-full">
+                        <input type="email" id="email" name="email" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="E-mail">
+                        <span id="email-error" class="text-red-500"></span>
+                    </div>                               
+                    <div class="w-full">
+                        <input type="tel" id="phone" name="phone" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="Telefon">
+                        <span id="phone-error" class="text-red-500"></span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">  
+                    <div class="flex-[1_1_150px]">
+                        <input type="number" id="postno" name="postno" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="Post nr.">
+                        <span id="postno-error" class="text-red-500"></span>
+                    </div>
+                    <div class="flex-[3_1_200px]">
+                        <input type="text" id="city" name="city" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="By">
+                        <span id="city-error" class="text-red-500"></span>
+                    </div>                                  
+                </div>                                                                
+                
+                <div>                                    
+                    <textarea id="message" name="message" rows="4" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="Indtast venligst din besked her..."></textarea>
+                    <span id="message-error" class="text-red-500"></span>
+                    <span id="charCount" class="text-gray-500 text-xs"></span>
+                </div>
+
+                <div>                                    
+                    <input type="number" id="question" name="question" class="text-sm text-primary-color p-2 border border-gray-300 bg-gray-100 w-full focus:outline-none focus:ring-1 focus:ring-primary-color" placeholder="Hvad er 4+1 = ?">
+                    <span id="question-error" class="text-red-500"></span>
+                </div>
+
+                <!-- Submit Button -->
+                
+                <button 
+                    id="btn-submit"
+                    type="submit" 
+                    class="bg-primary-color hover:bg-secondary-color w-full text-white font-medium py-2 px-4 transition duration-1000"
+                    mix-data="#frm-tilbud"                    
+                    mix-default="Send"
+                    mix-await="Vent venligst ..."                    
+                >Send</button>                                
+            </form>
+        </div>
+    </div>
+</div>

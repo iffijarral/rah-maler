@@ -1,0 +1,81 @@
+%include('./components/_header')
+<main class="main">
+
+    <div id="imageModal" class="bg-black bg-opacity-90 w-full h-full fixed top-0 left-0 z-50 hidden">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <!-- Close button -->
+            <span class="absolute top-4 right-4 text-white text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+    
+            <!-- Modal image -->
+            <div class="modal-content relative">
+                <img id="modalImage" class="max-h-[90vh] object-contain z-50">
+                <a class="prev absolute top-1/2 left-0 text-white text-4xl cursor-pointer" onclick="changeImage(-1)">&#10094;</a>
+                <a class="next absolute top-1/2 right-0 text-white text-4xl cursor-pointer" onclick="changeImage(1)">&#10095;</a>
+            </div>    
+    
+            <!-- Image counter -->
+            <div class="absolute bottom-2 text-white">
+                <span id="currentImg"></span> / <span id="totalImgs"></span>
+            </div>
+        </div>
+    </div> 
+    
+
+    <section class="w-full h-32 md:h-64 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container flex items-center justify-center h-full">
+            <h1 class="text-3xl md:text-6xl uppercase font-asap font-bold text-white w-[20ch] text-center">Gallery</h1>
+        </div>
+    </section>
+    <section class="py-20">        
+        <div class="container">
+            <h2>Generel Portefølje</h2>
+            <p>Se vores galleri og find inspiration til dit næste projekt.</p>
+            <section class="grid grid-cols-1 md:grid-cols-4 gap-4 py-4 place-content-center">
+                % if thumbnails:
+                    % for index, thumbnail in enumerate(thumbnails):
+                        <article class="mx-auto">                            
+                            <img src="/images/small/{{thumbnail}}" class="h-full rounded-lg cursor-pointer" onclick="openModal({{index}})"  alt="Gallery_Image">
+                        </article>      
+                    % end
+                % end
+            </section>
+        </div>
+    </section>
+</main>
+%include('./components/_footer')
+
+<script>
+
+    const images = JSON.parse('{{!thumbnails_json}}');
+    
+    const totalImages = images.length;
+
+    totalImgs.textContent = totalImages;
+
+    function openModal(index) 
+    {        
+        currentImageIndex = index;        
+        document.querySelector('#modalImage').src = '/images/large/'+images[currentImageIndex];
+        document.querySelector('#imageModal').style.display = "block";                
+        currentImg.textContent = currentImageIndex + 1;
+    }
+
+    function closeModal() 
+    {        
+        document.querySelector('#imageModal').style.display = "none";
+    }
+
+    function changeImage(direction) 
+    {
+        currentImageIndex += direction;
+        if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+        } else if (currentImageIndex < 0) {
+            currentImageIndex = images.length - 1;
+        }
+        document.querySelector('#modalImage').src = '/images/large/'+images[currentImageIndex];
+        currentImg.textContent = currentImageIndex + 1;
+    }
+
+
+</script>

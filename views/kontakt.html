@@ -1,0 +1,19 @@
+%include('./components/_header')
+<main class="main">
+    <section class="w-full h-32 md:h-64 bg-gradient-to-r from-blue-900 via-red-500 to-gray-200">
+        <div class="container flex items-center justify-center h-full">
+            <h1 class="text-3xl md:text-6xl uppercase font-asap font-bold text-white w-[20ch] text-center">Kontakt os</h1>
+        </div>
+    </section>
+    <section class="w-full py-20 bg-cover bg-center" style="background-image: url('../images/2.jpg');">        
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Left Column (Image) -->
+                %include('./components/_tilbud_form')
+                <!-- Right Column (Text) -->
+                %include('./components/_kontakt')                                       
+            </div>
+        </div>
+    </section>
+</main>
+%include('./components/_footer')

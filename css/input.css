@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@tailwind base;
+@layer base {
+
+    :root {
+        --colorBase: #fffaf0;
+        --colorPrimary: #001F3F;
+        --colorSecondary: #f62d00;
+        --colorAccent: #B2B2B2;  
+    }
+    h1 { line-height: 1.3 !important;}
+    h2 {
+      @apply text-lg md:text-xl lg:text-3xl xl:text-4xl;
+      @apply font-asap;      
+      @apply font-semibold;
+      @apply text-primary-color;
+    }
+    h2::after {
+        content: "";
+        display: block;
+        height: 8px;
+        width: 180px;
+        margin: 1rem 0;
+        background-color: #d0d0d0;
+    }
+    
+    h3 {
+      @apply text-lg;
+    }
+    a {
+      color: var(--colorPrimary);
+      cursor: pointer;
+    }
+    a:is(:hover, :focus) {
+        color: var(--colorSecondary);
+        outline-color: var(--colorPrimary);
+    }
+    p {
+        @apply leading-relaxed;        
+    }
+  }
+@tailwind components;
+@tailwind utilities;
+
+.container { 
+    margin: 0 auto;
+}
+.wrapper {
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+}
+nav {
+    @apply mt-8;
+    transition: all 500ms ease-in-out;
+}
+.logo-link {
+    @apply pt-16;
+    transition: all 500ms ease-in-out;
+}
+.logo {        
+    @apply h-36 md:h-48;    
+    transition: all 500ms ease-in-out;
+}
+nav > ul li a {
+    font-size: 1.5rem;
+    @apply font-asap;
+    @apply uppercase
+}
+nav > ul li a span {
+    flex-grow: 1;
+}
+nav > ul li a svg {
+    fill: var(--colorPrimary);
+    
+}
+.sub-menu {        
+    transform: scaleY(0); /* Collapse vertically */
+    opacity: 0; /* Hide content */
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out; /* Transition for both */
+    transform-origin: top; /* Ensure scaling is from the top */    
+}
+
+.sub-menu a {
+    @apply text-white;    
+}
+.sub-menu a:is(:hover, :focus) {
+    outline-color: var(--colorBase);
+    border-bottom: 1px solid var(--colorBase);
+}
+.show {
+    transform: scaleY(1); /* Collapse vertically */
+    opacity: 1; /* Hide content */
+}
+.rotate {
+    transform: rotate(180deg)
+}
+#sub-menu-icon {
+    transition: transform 500ms ease-in-out; /* Apply transition to transform */
+}
+.line1,
+        .line2 {
+            stroke-dasharray: 24;  /* This should be the total length of the line */
+            stroke-dashoffset: 24; /* Start hidden */
+            animation-duration: 1s; /* Duration for each line */
+            animation-fill-mode: forwards; /* Keep the end state of the animation */
+        }
+
+        .line1 {
+            animation-name: drawLine1; /* Animation for the first line */
+        }
+
+        .line2 {
+            animation-name: drawLine2; /* Animation for the second line */
+            animation-delay: 1s; /* Delay for the second line */
+        }
+
+        /* Keyframes for the first line */
+        @keyframes drawLine1 {
+            to {
+                stroke-dashoffset: 0; /* Draw line */
+            }
+        }
+
+        /* Keyframes for the second line */
+        @keyframes drawLine2 {
+            to {
+                stroke-dashoffset: 0; /* Draw line */
+            }
+        }
+
+/* Hero background image */
+.hero {
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    @apply h-[70vh] md:h-[100vh];
+    
+}
+.hero::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.85);    
+    position: absolute;    
+    inset: 0;
+    z-index: 1;
+}
+
+.hero .container {
+    @apply relative z-10 max-w-full;            
+    opacity: 0;
+    transform: translateY(130px);
+    animation: slide-up 1s ease-out forwards;
+    /* animation-delay: 0.5s; /* Delay to start the animation after load */
+}
+@keyframes slide-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.header-transparent {
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent */
+  }
+  /* Background white when scrolling */
+  .header-white {
+    background-color: rgba(255, 255, 255, 1); /* Fully white */
+    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.125);
+    transition: background-color 0.3s ease;
+    
+  }
+  .header-white .logo {
+    @apply h-24 md:h-40;    
+}
+.header-white .logo-link {
+    @apply pt-4 md:pt-8;    
+}
+.header-white nav {
+    margin-top: 0;
+}
+
+.main {
+    @apply mt-40;
+}
+ /* Custom styles for the folding effect */
+ .folding-effect {
+    position: relative;
+    background-color: rgba(255, 0, 0, 0.8);
+    border-top-left-radius: .5rem;      
+}
+
+/* Pseudo-element to create the folding effect */
+.folding-effect::before {
+    content: '';
+    position: absolute;
+    top: 0; /* Adjust to position it slightly above the top of the main div */
+    right: -10px; /* Adjust to position it slightly to the right of the main div */
+    height: 10px; /* Height of the fold */
+    width: 10px; /* Width of the fold */
+    background-color: rgba(255, 0, 0, 0.8);
+    border: 2px solid rgba(255, 0, 0, 0.8); /* Optional border for better visibility */
+    border-top-right-radius: .5rem;
+    z-index: 1; /* Ensure it appears above the main div */            
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "maling"
+        "spartel_opgaver" 
+        "renovering" 
+        "vindu_door_maling";    
+    gap: .5rem;
+}
+@media (min-width: 768px) {
+    .services-container {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:
+            "maling spartel_opgaver renovering"
+            "maling vindu_door_maling vindu_door_maling";    
+        gap: 2rem;
+    }
+    
+}
+.maling {
+    grid-area: maling;
+    @apply bg-gray-50;    
+}
+.spartel-opgaver {
+    grid-area: spartel_opgaver;    
+}
+.renovering {
+    grid-area: renovering;    
+}
+.vindu-door-maling {
+    grid-area: vindu_door_maling;    
+}
+.welcome-image {
+    position: absolute;    
+    right: 0;   
+}
+.title-text {
+    font-family: 'Asap', 'sans-serif';  
+    text-transform: uppercase;      
+}
+.title-text::after {
+    content: "";
+    display: block;
+    height: 8px;
+    width: 180px;
+    margin: 1rem 0;
+    background-color: #d0d0d0;
+}
+.error {
+    color: var(--colorSecondary);
+    @apply text-xs;    
+}
+/*  */
+.blocks {
+    position: relative;
+}
+.blocks:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: -40rem;
+    bottom: -20rem;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(235, 141, 17, .15) 0, rgba(235, 141, 17, 0) 100%);
+}
+
+header p {
+    font-family: THICCCBOI, Arial, sans-serif;
+    font-size: 5rem;
+    line-height: 5rem;
+    -webkit-letter-spacing: -.1rem;
+    -moz-letter-spacing: -.1rem;
+    -ms-letter-spacing: -.1rem;
+    letter-spacing: -.1rem;
+}
+.c14mqqgb {
+    @apply px-4 py-10 flex w-full bg-gray-50;        
+    justify-content: center;
+    -webkit-transition: box-shadow .3s ease;
+    -webkit-transition: -webkit-box-shadow .3s ease;
+    transition: -webkit-box-shadow .3s ease;
+    transition: box-shadow .3s ease, background-color 1s ease;
+    transition: box-shadow .3s ease, -webkit-box-shadow .3s ease;      
+    border: 1px solid #d0d0d0;        
+    mix-blend-mode: normal;
+    
+    z-index: 3;
+}
+.c14mqqgb:is(:hover, :focus) {
+    -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .15);
+    
+    cursor: pointer;
+}
+.background {
+    position: relative;
+    height: 100%;
+}
+.background::before {
+    content: '';    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: -40rem;
+    bottom: -20rem;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(240 148 148 / 80%) 0, rgba(235, 141, 17, 0) 100%);
+}
+
+
+
+
+
+
+
+/* style for toast */
+.toast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;      
+    background-color: var(--colorSecondary);
+    color: var(--colorBase);
+    text-align: center;
+    border-radius: 2px;  
+    z-index: 1000;  
+    position: fixed;
+    top: 0;
+}
+
+#toast.show {
+    display: flex;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/output.css" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    % if 'extra_head' not in locals():
+        <script type="module" src="/js/tilbud.js"></script>
+    % end
+
+    <script src="/js/mixhtml.js" defer></script>
+    
+    <title>
+        {{ get("title", "RAH MALER") }}
+    </title>
+
+</head>
+<body class="font-inter">
+    <div id="toast"></div>
+    <div class="wrapper">
+        <!-- Header -->
+        <header id="header" class="fixed top-0 left-0 w-full z-50 header-transparent h-20 md:h-32">
+            <div class="container px-4 md:px-0 flex items-center justify-between md:py-4 h-full">
+                <!-- Logo -->                
+                <a href="/" class="logo-link">
+                    <img class="logo" src="../images/logo.svg" alt="logo">
+                </a>            
+                <!-- Navigation -->
+                <nav>
+                    <svg
+                        id="mobile-menu"
+                        class="w-10 h-10 lg:hidden cursor-pointer transition duration-500 ease-in-out"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                 
+                    <section id="primary-menu-section" class="hidden absolute top-0 left-0 w-screen h-screen md:h-auto md:w-auto lg:block md:relative md:bg-inherit bg-gray-100 px-4 md:px-0">
+                        <!-- Close Icon -->
+                        <div
+                            id="close-icon"
+                            class="hidden cursor-pointer p-8"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <line class="line1" x1="18" y1="6" x2="6" y2="18"></line>
+                                <line class="line2" x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </div> 
+                        <ul id="primary-menu" class="flex flex-col space-y-4 w-fit md:space-y-0 md:flex-row md:items-center md:space-x-6">
+                            <li><a href="/" class="uppercase text-3xl sm:text-lg md:text-2xl">Forside</a></li>
+                            <li class="relative">
+                                <a id="services" href="#" class="uppercase text-3xl sm:text-lg md:text-2xl flex justify-between items-center">
+                                    <span> vi tilbyder </span>
+                                    <svg id="sub-menu-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" class="fill-current hover:fill-red-500"><path d="M480-360 280-560h400L480-360Z"/></svg>                                                                
+                                </a>
+                                <ul id="sub-menu" class="sub-menu md:w-full hidden md:flex md:absolute flex-col space-y-4 md:flex-row md:top-8 py-4 bg-primary-color overflow-hidden">
+                                    <div>
+                                        <li class="px-2"><a href="/malearbejde" class="text-xl md:text-lg" title="Malerarbejde">Malerarbejde</a></li>
+                                        <li class="px-2 py-2"><a href="/spartling" class="text-xl md:text-lg" class="text-sm" title="Spartel">Spartling</a></li>
+                                        <li class="px-2 pb-2"><a href="/renovering" class="text-xl md:text-lg" title="Renovering">Renovering</a></li>                                                                        
+                                        <li class="px-2"><a href="/vinduer-dore" class="text-xl md:text-lg" title="Vinduer & Døre">Vinduer & Døre</a></li>                                                                        
+                                    </div>
+                                </ul>
+                            </li>
+                            <li><a href="/gallery" class="uppercase text-3xl sm:text-lg md:text-2xl">galleri</a></li>
+                            <li><a href="/kontakt" class="uppercase text-3xl sm:text-lg md:text-2xl">kontakt</a></li>
+                            <li>    
+                                <a href="tel:+1234567890">
+                                <button class="flex gap-2 items-center bg-primary-color text-white py-2 px-4 rounded w-fit cursor-pointer transition duration-1000 ease-in-out hover:bg-red-500"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                    </svg>
+                                    51 78 78 32
+                                </button>                 
+                                </a>                                   
+                            </li>
+                        </ul>
+                    </section>
+                </nav>
+            </div>
+        </header>
+
+        <script>
+
+            // Scroll event to handle nav in header
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                  header.classList.remove('header-transparent');
+                  header.classList.add('header-white');
+                } else {
+                  header.classList.remove('header-white');
+                  header.classList.add('header-transparent');
+                }
+            });
+
+            // Handle Mobile Menu
+            const mobileMenu = document.querySelector('#mobile-menu');
+            const closeIcon = document.querySelector('#close-icon');
+            const primaryMenu = document.querySelector('#primary-menu-section');
+
+            mobileMenu.addEventListener('click', toggleMobileMenu);
+            closeIcon.addEventListener('click', toggleMobileMenu);
+
+            function toggleMobileMenu() {
+                primaryMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');               
+                // Add rotation to the close icon
+                closeIcon.classList.toggle('rotate-180');
+            }
+
+            
+
+        const servicesLink = document.querySelector('#services');
+        const subMenu = document.querySelector('#sub-menu');
+        const subMenuIcon = document.querySelector('#sub-menu-icon');    
+        let lastInteractionType = '';   
+
+        // Add event listener to the services link to toggle the submenu
+        servicesLink.addEventListener('click', function() {
+            lastInteractionType = "Button Click";
+            toggleIt();
+        });
+
+        // Add event listener to handle clicks outside the submenu
+        document.addEventListener('click', handleClickOutside);
+
+        // Function to handle clicks outside of the sub-menu
+        function handleClickOutside(event) {
+            
+            // Close the submenu if clicked outside
+            if (
+                !subMenu.contains(event.target) && 
+                !servicesLink.contains(event.target) &&  
+                !mobileMenu.contains(event.target) && // Check if clicked on the burger menu
+                !primaryMenu.contains(event.target) ) {
+                
+                subMenu.classList.add('hidden'); // Hide the submenu
+                subMenu.classList.remove('flex'); // Remove flex class
+                subMenu.classList.remove('show'); // Remove custom show class
+                subMenuIcon.classList.remove('rotate'); // Reset the icon rotation
+            }
+        }                     
+        
+             
+         // Handle sub-menu using keyboard
+        document.addEventListener('keydown', (event) => {
+            //if (subMenu.classList.contains('hidden')) return;        
+            lastInteractionType = "Tab";
+            // Close submenu on Escape key
+            if (event.key === 'Escape') {     
+                if(subMenu.classList.contains('show')) {
+                    subMenu.classList.toggle('show');
+                    subMenuIcon.classList.toggle('rotate');
+                }      
+                servicesLink.focus(); // Return focus to the dropdown toggle            
+            }
+
+            // Handle Tab and Shift+Tab
+            const submenuItems = document.querySelectorAll('.sub-menu li a');
+            const firstItem = submenuItems[0];
+            const firstItemLink = firstItem.querySelector('a');
+            const lastItem = submenuItems[submenuItems.length - 1];
+            const lastItemLink = lastItem.querySelector('a');
+
+            if (event.key === 'Tab') {  
+                
+                if (event.shiftKey) {
+                    // Shift + Tab                
+                    if (document.activeElement.innerHTML.toLowerCase() === 'galleri') {                    
+                        toggleIt();                    
+                    }
+                } else {
+                    // Tab                                    
+                    if (document.activeElement === lastItem) {                        
+                        toggleIt();                    
+                    }
+
+                }
+            }        
+
+            // Handle Arrow key navigation
+            
+            let index = Array.from(submenuItems).indexOf(document.activeElement);
+            
+            if (event.key === 'ArrowDown') {
+                
+                event.preventDefault(); // Prevent default scrolling
+                if (index < submenuItems.length - 1) {
+                    submenuItems[index + 1].focus();
+                }
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (index > 0) {
+                    submenuItems[index - 1].focus();
+                }
+            }
+        });
+
+    servicesLink.addEventListener('focusin', function(event) {
+        if(lastInteractionType === 'Tab') {
+            toggleIt();
+        }                 
+    }); 
+
+    // Function to toggle the submenu
+    function toggleIt() {                                                      
+        subMenu.classList.toggle('show');
+        subMenuIcon.classList.toggle('rotate');
+        subMenu.classList.toggle('hidden');
+    } 
+
+    </script>

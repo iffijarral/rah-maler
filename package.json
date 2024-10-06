@@ -1,0 +1,16 @@
+
+{
+  "name": "bottle-tailwind-rah-maler-app",
+  "version": "1.0.0",
+  "description": "A Bottle application styled with Tailwind CSS",
+  "main": "app.py",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/output.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  },
+  "dependencies": {},
+  "author": "Iftikhar Ahmed",
+  "license": "MIT"
+}
