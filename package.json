@@ -1,4 +1,3 @@
-
 {
   "name": "bottle-tailwind-rah-maler-app",
   "version": "1.0.0",
@@ -10,7 +9,9 @@
   "devDependencies": {
     "tailwindcss": "^3.4.10"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vercel": "^37.6.1"
+  },
   "author": "Iftikhar Ahmed",
   "license": "MIT"
 }
