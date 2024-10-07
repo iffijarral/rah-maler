@@ -1,7 +1,6 @@
 from bottle import Bottle, get, post, run, template, static_file
 import x
 import json
-import serverless_wsgi
 import os
 
 app = Bottle()  
@@ -20,7 +19,8 @@ def serve_js(file_name):
 
 @get('/')
 def _():    
-    return template("index", extra_head="")
+    return "Hello World"
+    # return template("index", extra_head="")
 
 @get('/malearbejde')
 def _():
@@ -206,5 +206,5 @@ def isInputValid():
 
 # run(host='0.0.0.0', port=8080, debug=True, reloader=True)
 # Handler for Vercel
-def handler(event, context):
-    return serverless_wsgi.handle_request(app, event, context)
+if __name__ == "__main__":
+    run(app, host='0.0.0.0', port=8080)
