@@ -202,6 +202,7 @@ def isInputValid():
     else:
         return True
 port = int(os.environ.get("PORT", 8000))
+
 run(host='0.0.0.0', port=port, debug=True, reloader=True)
 # Handler for Vercel
 # if __name__ == "__main__":
