@@ -1,9 +1,7 @@
-from bottle import Bottle, get, post, run, template, static_file
+from bottle import get, post, run, template, static_file
 import x
 import json
 import os
-
-app = Bottle()  
 
 @get('/css/<file_name:path>')
 def serve_css(file_name):
@@ -204,7 +202,7 @@ def isInputValid():
     else:
         return True
 
-# run(host='0.0.0.0', port=8080, debug=True, reloader=True)
+run(host='0.0.0.0', port=8080, debug=True, reloader=True)
 # Handler for Vercel
-if __name__ == "__main__":
-    run(app, host='0.0.0.0', port=8080)
+# if __name__ == "__main__":
+#     run(app, host='0.0.0.0', port=8080)
