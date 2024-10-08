@@ -1,42 +1,43 @@
-from bottle import get, post, run, template, static_file
+from bottle import Bottle, get, post, run, template, static_file
 import x
 import json
 import os
 
-@get('/css/<file_name:path>')
+app = Bottle()
+
+@app.get('/css/<file_name:path>')
 def serve_css(file_name):
     return static_file(file_name, root='./css')
 
-@get('/images/<file_name:path>')
+@app.get('/images/<file_name:path>')
 def serve_images(file_name):
     return static_file(file_name, root='./images')
 
-@get('/js/<file_name:path>')
+@app.get('/js/<file_name:path>')
 def serve_js(file_name):
     return static_file(file_name, root='./js')
 
-@get('/')
-def _():    
-    return "Hello World"
-    # return template("index", extra_head="")
+@app.route('/')
+def _():        
+    return template("index", extra_head="")
 
-@get('/malearbejde')
+@app.route('/malearbejde')
 def _():
     return template("malearbejde")
 
-@get('/spartling')
+@app.route('/spartling')
 def _():
     return template("spartling")
 
-@get('/renovering')
+@app.route('/renovering')
 def _():
     return template("renovering")
 
-@get('/vinduer-dore')
+@app.route('/vinduer-dore')
 def _():
     return template("vinduer-dore")
 
-@get('/gallery')
+@app.route('/gallery')
 def _():
     try:
         thumbnails = x.get_thumbnails()
@@ -48,14 +49,14 @@ def _():
     finally:
         pass
 
-@get('/kontakt')
+@app.route('/kontakt')
 def _():
     return template("kontakt")
 
-@get('/upload')
+@app.route('/upload')
 def _():
     return template("upload")
-@post('/upload')
+@app.post('/upload')
 def _():
     try:        
         x.upload()
@@ -64,7 +65,7 @@ def _():
         print(ex)
     finally:
         pass
-@post('/tilbud')
+@app.post('/tilbud')
 def tilbud():
     try:
         result = isInputValid()
@@ -201,9 +202,10 @@ def isInputValid():
         return html
     else:
         return True
-port = int(os.environ.get("PORT", 8000))
+# port = int(os.environ.get("PORT", 8000))
 
-run(host='0.0.0.0', port=port, debug=True, reloader=True)
-# Handler for Vercel
-# if __name__ == "__main__":
-#     run(app, host='0.0.0.0', port=8080)
+# run(host='0.0.0.0', port=port, debug=True, reloader=True)
+if __name__ == "__main__":
+    # Development-only configurations
+    port = int(os.environ.get("PORT", 8000))
+    run(app, host='0.0.0.0', port=port, debug=True, reloader=True)
