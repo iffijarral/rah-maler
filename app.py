@@ -201,8 +201,8 @@ def isInputValid():
         return html
     else:
         return True
-
-run(host='0.0.0.0', port=8080, debug=True, reloader=True)
+port = int(os.environ.get("PORT", 8000))
+run(host='0.0.0.0', port=port, debug=True, reloader=True)
 # Handler for Vercel
 # if __name__ == "__main__":
 #     run(app, host='0.0.0.0', port=8080)
